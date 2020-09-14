@@ -8,6 +8,7 @@
 /src/.preload.php
 /var/
 /vendor/
+migration/
 ###< symfony/framework-bundle ###
 
 ###> symfony/phpunit-bridge ###
