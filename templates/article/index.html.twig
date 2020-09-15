@@ -10,11 +10,15 @@
 
     <div>
         {% if article is defined %}
-            <p>Voici l'article : {{ article.id }} => {{article.nomArticle}}</p>
+            {# <p>Voici l'article : {{ article.id }} => {{article.nomArticle}}</p> #}
             
         {% else %}
         {#     Pour affichage de findBy() ou findAll() #}
             {% for article in articles %} 
+<<<<<<< HEAD
+=======
+                {# <p>Les articles : {{ article.id }} => {{article.nomArticle}}</p> #}
+>>>>>>> a3951d7b97235f11cea13d616b2c8a352fb4ff62
 
             {# CARD #}
             <form method="POST" class="d-inline-flex m-3">
