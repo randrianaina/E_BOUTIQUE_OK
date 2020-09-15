@@ -15,18 +15,15 @@
         {% else %}
         {#     Pour affichage de findBy() ou findAll() #}
             {% for article in articles %} 
-<<<<<<< HEAD
-=======
-                {# <p>Les articles : {{ article.id }} => {{article.nomArticle}}</p> #}
->>>>>>> a3951d7b97235f11cea13d616b2c8a352fb4ff62
 
             {# CARD #}
             <form method="POST" class="d-inline-flex m-3">
                 <div class="card d-inline-flex m-3" style="width: 18rem; ">
                     <div class="card-body">
                         <h5 class="card-title">{{article.nomArticle}}</h5>
-                        
-                        <img src="{{asset('img/Console-Xbox-360.jpg')}}" class="card-img-top" alt="">
+                        {# {% if loop.index == 1 %} #}
+                        <img src="{{asset('img/' ~ article.imageArticle)}}" class="card-img-top" alt="">
+                        {# {% endif %} #}
                     </div>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">{{article.prixArticle}}</li>
