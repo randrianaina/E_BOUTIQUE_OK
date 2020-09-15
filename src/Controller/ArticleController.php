@@ -26,8 +26,9 @@ class ArticleController extends AbstractController
         $repository = $this->getDoctrine()->getRepository(Articles::class);
         $articles = $repository->findAll(); // $products = $repository->findBy(['name'=>'keyboard', 'price'=>'ASC']); => vient tout mettre dans un tableau
         /* $products = $repository->findAll(); */
-        dump($articles);
+        //dump($articles);
 
+        dump(session_status());
         if (!$articles) {
             throw $this->createNotFoundException('Pas d\'article trouvé ...!');
         }
@@ -38,5 +39,40 @@ class ArticleController extends AbstractController
         // in the template, print things with {{ product.name }}
         // return $this->render('product/show.html.twig', ['product' => $product]);
     }
+
+    /**
+     * @Route("/article/consoles", name="article_consoles")
+     */
+    public function Consoles()
+    {
+        $repository = $this->getDoctrine()->getRepository(Articles::class);
+        $articles = $repository->findBy(array("idCategorie" => 1)); 
+        //dump($articles);
+
+        if (!$articles) {
+            throw $this->createNotFoundException('Pas d\'article trouvé ...!');
+        }
+
+        return $this->render('article/index.html.twig', ['articles' => $articles, 'controller_name' => 'Article Controller' ]);
+    }
+
+    /**
+     * @Route("/article/jeux", name="article_jeux")
+     */
+    public function Jeux()
+    {
+        $repository = $this->getDoctrine()->getRepository(Articles::class);
+        $articles = $repository->findBy(array("idCategorie" => 2)); 
+        //dump($articles);
+
+        if (!$articles) {
+            throw $this->createNotFoundException('Pas d\'article trouvé ...!');
+        }
+
+        return $this->render('article/index.html.twig', ['articles' => $articles, 'controller_name' => 'Article Controller' ]);
+    }
+
+
+
 
 }

@@ -10,12 +10,12 @@
 
     <div>
         {% if article is defined %}
-            <p>Voici l'article : {{ article.id }} => {{article.nomArticle}}</p>
+            {# <p>Voici l'article : {{ article.id }} => {{article.nomArticle}}</p> #}
             
         {% else %}
         {#     Pour affichage de findBy() ou findAll() #}
             {% for article in articles %} 
-                <p>Les articles : {{ article.id }} => {{article.nomArticle}}</p>
+                {# <p>Les articles : {{ article.id }} => {{article.nomArticle}}</p> #}
 
             {# CARD #}
             <div class="card" style="width: 18rem;">
