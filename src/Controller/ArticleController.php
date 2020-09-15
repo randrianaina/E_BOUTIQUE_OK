@@ -6,6 +6,9 @@ use App\Entity\Articles;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
+
+
 class ArticleController extends AbstractController
 {
 
@@ -22,6 +25,7 @@ class ArticleController extends AbstractController
         if (!$articles) {
             throw $this->createNotFoundException('Pas d\'article trouvé ...!');
         }
+        dump($_POST);
 
         return $this->render('article/index.html.twig', ['articles' => $articles, 'controller_name' => 'Article Controller' ]);
 
@@ -61,6 +65,26 @@ class ArticleController extends AbstractController
 
         return $this->render('article/index.html.twig', ['articles' => $articles, 'controller_name' => 'Article Controller' ]);
     }
+
+   /*  private $session;
+
+    public function __construct(SessionInterface $session)
+    {
+        $this->session = $session;
+    }
+
+    public function addArticle()
+    {
+        if (isset($_POST['add'])) {
+            $_POST['add'] = $_SESSION['add'];
+        }
+
+            $this->session->get($_SESSION['add']);
+
+        }
+        
+    } */
+
 
 
 

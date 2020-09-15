@@ -8,7 +8,7 @@
 /src/.preload.php
 /var/
 /vendor/
-migration/
+/migration/
 .env
 .env.test
 ###< symfony/framework-bundle ###
