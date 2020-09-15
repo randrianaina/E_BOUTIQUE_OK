@@ -31,30 +31,10 @@
                         <a class="nav-link" href="{{ path('app_login') }}">Login <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="{{ path('app_logout') }}">Logout <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item active">
                         <a class="nav-link" href="{{ path('app_register') }}">Register <span class="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Dropdown
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-                    </li>
-                    {% if app.user %}
-                        <div class="mb-3">
-                            You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
-                        </div>
-                    {% endif %}
+                    
+                    
                     </ul>
                     <form class="form-inline my-2 my-lg-0">
                         {# <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -66,10 +46,16 @@
                         </button>
                         <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Items</button>
                         <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Total</button>
-
                     </form>
                 </div>
          </nav>
+         <div class="nav-item bg-secondary text-success text-center">
+            {% if app.user %}
+                <div class="my-3">
+                    <i>You are logged in as {{ app.user.username }} ==> <a href="{{ path('app_logout') }}">Logout</a></i>
+                </div>
+            {% endif %}
+        </div>
 
 
         {% block body %}

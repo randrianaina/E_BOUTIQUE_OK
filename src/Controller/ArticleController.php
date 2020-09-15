@@ -8,24 +8,14 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ArticleController extends AbstractController
 {
-    /**
-     * @Route("/article", name="article")
-     */
-    public function index()
-    {
-        return $this->render('article/index.html.twig', [
-            'controller_name' => 'ArticleController',
-        ]);
-    }
 
     /**
-     * @Route("/article/tous", name="article_tous")
+     * @Route("/", name="article_tous")
      */
-    public function All() // pour trouver par l'attribut que l'on veut => name, price voire les 2
+    public function All() 
     {
         $repository = $this->getDoctrine()->getRepository(Articles::class);
-        $articles = $repository->findAll(); // $products = $repository->findBy(['name'=>'keyboard', 'price'=>'ASC']); => vient tout mettre dans un tableau
-        /* $products = $repository->findAll(); */
+        $articles = $repository->findAll(); 
         //dump($articles);
 
         dump(session_status());
