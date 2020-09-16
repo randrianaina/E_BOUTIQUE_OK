@@ -3,16 +3,27 @@
 {% block title %}Register{% endblock %}
 
 {% block body %}
-    {% for flashError in app.flashes('verify_email_error') %}
-        <div class="alert alert-danger" role="alert">{{ flashError }}</div>
-    {% endfor %}
-
-    <h1 class="text-success bg-light ml-5">Register</h1>
-    {{ form_start(registrationForm, {class: 'form-control'}) }}
-        {{ form_row(registrationForm.email, { class:'form-control w-25 p-3' } ) }}
-        {{ form_row(registrationForm.plainPassword, {label: 'Password'}, { class:'form-control' }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
-
-        <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}
+    <div class="container">
+        <div class="row ">
+            {% for flashError in app.flashes('verify_email_error') %}
+                <div class="alert alert-danger" role="alert">{{ flashError }}</div>
+            {% endfor %}
+            <div class="rounded-lg bg-light w-50 mx-auto mt-5 border-top border-success shadow-lg">
+                <h1 class="text-success bg-light mt-3 text-center">Register</h1>
+                <div class="form-group mb-0 w-100 ">
+                    {{ form_start(registrationForm, {class: 'w-25 p-3'}) }}
+                    <div>
+                        <div>
+                            {{ form_row(registrationForm.email, { class:'form-control w-25 p-3 text-success text-center' } ) }}
+                            {{ form_row(registrationForm.plainPassword, {label: 'Password'}, { class:'form-control w-25 p-3 text-success text-center' }) }}
+                        </div>
+                        <div class="d-flex flex-column ">
+                            {{ form_row(registrationForm.agreeTerms, { class:'text-success' } )}}
+                                <button type="submit" class="btn btn-lg btn-success text-light shadow border border-success border-top-0 rounded-bottom py-3 w-100">Register</button>
+                            {{ form_end(registrationForm) }}
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
