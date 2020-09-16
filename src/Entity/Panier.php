@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\PanierRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 /**
  * @ORM\Entity(repositoryClass=PanierRepository::class)
@@ -22,17 +23,7 @@ class Panier
         return $this->id;
     }
 
-    public function __construct(){
-		if(!isset($_SESSION['panier'])){
-			$_SESSION['panier'] = array();
-		}
-	}
 
-    public function add($product_id){
-		if(isset($_SESSION['panier'][$product_id])){
-			$_SESSION['panier'][$product_id]++;
-		}else{
-			$_SESSION['panier'][$product_id] = 1;
-		}
-	}
+  
+  
 }
