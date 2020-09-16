@@ -8,13 +8,70 @@
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+<div class="checkout">
+	<div class="title">
+		<div class="wrap">
+		<h2 class="first">Panier</h2>
+		</div>
+	</div>
+	{# <form method="post" action="panier"> #}
+        <div class="table">
+            <div class="wrap">
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/Applications/MAMP/htdocs/E_BOUTIQUE_OK/src/Controller/PanierController.php'|file_link(0) }}">src/Controller/PanierController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/Applications/MAMP/htdocs/E_BOUTIQUE_OK/templates/panier/index.html.twig'|file_link(0) }}">templates/panier/index.html.twig</a></code></li>
-    </ul>
+                <div class="rowtitle">
+                    <span class="name">Product name</span>
+                    <span class="price">Price</span>
+                    <span class="quantity">Quantity</span>
+                    <span class="subtotal">Prix avec TVA</span>
+                    <span class="action">Actions</span>
+                </div>
+
+                {foreach from=$allArticles item=article}
+                <div class="row">
+                    <a href="#" class="img"> <img src="{$article->get_imageArticle()}" height="53"></a>
+                    <span class="name">{$article->get_nomArticle()}</span>
+                    <span class="price">{$article->get_prixArticle()} €</span>
+                    <span class="quantity"><input type="text" name="panier[quantity][{$article->get_idArticle()}]" value="{$panier->quantite({$article->get_idArticle()})}"></span>
+                    <span class="subtotal">{$article->get_prixArticle()} €</span>
+                    <span class="action"><a href="sup_art_panier&{$article->get_idArticle()}" class="del"><img src="view/web/img/del.png"></a></span>
+                </div>
+                {/foreach}
+                <div class="rowtotal">
+                    Grand Total : <span class="total">{$panier->total()}  € </span>
+                </div>
+                <input type="submit" value="Recalculer">
+            </div>
+        </div>
+	{# </form> #}
 </div>
+
+    <div>
+        <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Nom Produit</th>
+                <th scope="col">Prix</th>
+                <th scope="col">Quantité</th>
+                <th scope="col">Prix TTC</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                {% for article in articles %}
+                    <th scope="row">{{article.imageArticle}}</th>
+                    <td>{{article.nomArticle}}</td>
+                    <td>{{article.prixArticle}}</td>
+                    <td>Quantité</td>
+                    <td>Prix TTC</td>
+                    <td>Action</td>
+                {% endfor %}
+            </tr>
+        </tbody>
+        <tfoot> 
+
+        </tfoot>
+        </table>
+    </div>
+
 {% endblock %}
