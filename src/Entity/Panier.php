@@ -23,36 +23,7 @@ class Panier
         return $this->id;
     }
 
-    /* public function __construct(){
-		if(!isset($_SESSION['panier'])){
-			$_SESSION['panier'] = array();
-		}
-	}
 
-    public function add($product_id){
-		if(isset($_SESSION['panier'][$product_id])){
-			$_SESSION['panier'][$product_id]++;
-		}else{
-			$_SESSION['panier'][$product_id] = 1;
-		}
-  } */
   
-  private $session;
-
-    public function __construct(SessionInterface $session)
-    {
-        $this->session = $session;
-    }
-
-
-
-    public function addArticle()
-    {
-        if (isset($_POST['submit'])) {
-            $_SESSION = array();
-            $_POST['submit'] = $_SESSION['submit'];
-        }
-
-        $this->session->get($_SESSION['submit']);
-    }
+  
 }
