@@ -22,8 +22,4 @@ class Panier
     {
         return $this->id;
     }
-
-
-  
-  
 }
