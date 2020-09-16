@@ -28,17 +28,11 @@ class ArticleController extends AbstractController
     {
         $repository = $this->getDoctrine()->getRepository(Articles::class);
         $articles = $repository->findAll(); // $products = $repository->findBy(['name'=>'keyboard', 'price'=>'ASC']); => vient tout mettre dans un tableau
-        /* $products = $repository->findAll(); */
-        //dump($articles);
-
-        dump(session_status());
         if (!$articles) {
             throw $this->createNotFoundException('Pas d\'article trouvé ...!');
         }
         dump($_POST);
-
-        return $this->render('article/index.html.twig', ['articles' => $articles, 'controller_name' => 'Article Controller' ]);
-
+        return $this->render('article/index.html.twig', ['articles' => $articles, 'controller_name' => 'Article Controller']);
         // or render a template
         // in the template, print things with {{ product.name }}
         // return $this->render('product/show.html.twig', ['product' => $product]);
@@ -50,14 +44,14 @@ class ArticleController extends AbstractController
     public function Consoles()
     {
         $repository = $this->getDoctrine()->getRepository(Articles::class);
-        $articles = $repository->findBy(array("idCategorie" => 1)); 
+        $articles = $repository->findBy(array("idCategorie" => 1));
         //dump($articles);
 
         if (!$articles) {
             throw $this->createNotFoundException('Pas d\'article trouvé ...!');
         }
 
-        return $this->render('article/index.html.twig', ['articles' => $articles, 'controller_name' => 'Article Controller' ]);
+        return $this->render('article/index.html.twig', ['articles' => $articles, 'controller_name' => 'Article Controller']);
     }
 
     /**
@@ -66,37 +60,19 @@ class ArticleController extends AbstractController
     public function Jeux()
     {
         $repository = $this->getDoctrine()->getRepository(Articles::class);
-        $articles = $repository->findBy(array("idCategorie" => 2)); 
-        //dump($articles);
+        $articles = $repository->findBy(array("idCategorie" => 2));
 
         if (!$articles) {
             throw $this->createNotFoundException('Pas d\'article trouvé ...!');
         }
 
-        return $this->render('article/index.html.twig', ['articles' => $articles, 'controller_name' => 'Article Controller' ]);
+        return $this->render('article/index.html.twig', ['articles' => $articles, 'controller_name' => 'Article Controller']);
     }
 
-   /*  private $session;
 
-    public function __construct(SessionInterface $session)
-    {
-        $this->session = $session;
-    }
-
-    public function addArticle()
-    {
-        if (isset($_POST['add'])) {
-            $_POST['add'] = $_SESSION['add'];
-        }
-
-            $this->session->get($_SESSION['add']);
-
-        }
-        
-    } */
+    //$panier = new Panier();
 
 
 
-
-
+    
 }
