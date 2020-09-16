@@ -9,14 +9,6 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/Applications/MAMP/htdocs/E_BOUTIQUE_OK/src/Controller/PanierController.php'|file_link(0) }}">src/Controller/PanierController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/Applications/MAMP/htdocs/E_BOUTIQUE_OK/templates/panier/index.html.twig'|file_link(0) }}">templates/panier/index.html.twig</a></code></li>
-    </ul>
-
     {% if items | length > 0 %}
         <table class="table">
             <thead>
@@ -25,8 +17,7 @@
                     <th>Image</th>
                     <th>Prix</th>
                     <th>Quantite</th>
-                    <th>Type</th>
-                    <th>BTN Delete</th>
+                    <th>Delete</th>
                 </tr>
             </thead>
             <tbody>
@@ -36,7 +27,7 @@
                         <td>{{item.product.imageArticle}}</td>
                         <td>{{item.product.prixArticle}}</td>
                         <td>{{item.quantity}}</td>
-                        <td></td>
+                        <td><a href="#" class="btn btn-danger btn-sm">DEL </a></td>
                     </tr> 
                 {% endfor %}
                
@@ -44,8 +35,9 @@
 
             <tfoot>
                 <tr>
-                    <td>Total </td>
-                    <td></td>
+                    <td colspan="3" class='text-right'>Total: </td>
+                    <td><b>{{total}}</b></td>
+                    <td> euros </td>
                 </tr>
             </tfoot>
         </table>
