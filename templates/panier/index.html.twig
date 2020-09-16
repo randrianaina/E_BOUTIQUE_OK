@@ -16,5 +16,42 @@
         <li>Your controller at <code><a href="{{ '/Applications/MAMP/htdocs/E_BOUTIQUE_OK/src/Controller/PanierController.php'|file_link(0) }}">src/Controller/PanierController.php</a></code></li>
         <li>Your template at <code><a href="{{ '/Applications/MAMP/htdocs/E_BOUTIQUE_OK/templates/panier/index.html.twig'|file_link(0) }}">templates/panier/index.html.twig</a></code></li>
     </ul>
+
+    {% if items | length > 0 %}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Article</th>
+                    <th>Image</th>
+                    <th>Prix</th>
+                    <th>Quantite</th>
+                    <th>Type</th>
+                    <th>BTN Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in items %}
+                    <tr>
+                        <td>{{item.product.nomArticle}}</td>
+                        <td>{{item.product.imageArticle}}</td>
+                        <td>{{item.product.prixArticle}}</td>
+                        <td>{{item.quantity}}</td>
+                        <td></td>
+                    </tr> 
+                {% endfor %}
+               
+            </tbody>
+
+            <tfoot>
+                <tr>
+                    <td>Total </td>
+                    <td></td>
+                </tr>
+            </tfoot>
+        </table>
+    {% else %}
+        <p> Surprise, c'est vide! </p> 
+    {% endif %}
+    
 </div>
 {% endblock %}

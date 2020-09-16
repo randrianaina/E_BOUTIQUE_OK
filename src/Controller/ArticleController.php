@@ -27,6 +27,7 @@ class ArticleController extends AbstractController
         // return $this->render('product/show.html.twig', ['product' => $product]);
     }
 
+
     /**
      * @Route("/article/consoles", name="article_consoles")
      */
