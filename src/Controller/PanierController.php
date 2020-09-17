@@ -108,6 +108,58 @@ class PanierController extends AbstractController
         $session->set('panier', $panier);
     }
 
+    /**
+     * @Route("/panier/add/{id}/quantity" , name="panier_add_art_quantity")           //Convention name: controllername_methode
+     */
+    public function quantityadd($id, SessionInterface $session, ArticlesRepository $articlesRepository)
+    {
+        $panier = $session->get('panier', []);
+
+        if (!empty($panier[$id])) {
+            // Si j'ai DEJA un produit dans le panier
+            $panier[$id]++;
+            // On RAJOUTE '1' chaque fois;
+        } else {
+            $panier[$id] = 1;
+        }
+
+       $session->set('panier', $panier);
+
+       $panier = $session->get('panier', []);
+
+       $panierWithData = [];
+
+       foreach ($panier as $id => $quantity) {
+           $panierWithData[] = [
+               // On bouge tout dans un nouveau tableau, avec 2 colonnes 
+               'product' => $articlesRepository->find($id),
+               // Ici on a besoin de toutes les donnes d'article qui correspondent a l'ID
+               // On utilise "ArticlesRepository"
+               'quantity' => $quantity
+           ];
+       }
+
+       $total = 0;
+       foreach ($panierWithData as $item)
+       {
+           $totalItem = $item['product']->getPrixArticle() * $item['quantity'];
+           $total += $totalItem;
+           // Pour chaque article/item, on ajoute dans $totalItem ce qu'on viens de calculer
+       }
+
+       
+
+
+       return $this->render('panier/index.html.twig', [
+           'controller_name' => 'PanierController',
+           'items' => $panierWithData,
+           'total' => $total
+       ]);
+
+        
+
+    }
+    
 
 
 
