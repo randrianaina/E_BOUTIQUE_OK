@@ -20,11 +20,8 @@ class ArticleController extends AbstractController
         if (!$articles) {
             throw $this->createNotFoundException('Pas d\'article trouvé ...!');
         }
-        dump($_POST);
+        
         return $this->render('article/index.html.twig', ['articles' => $articles, 'controller_name' => 'Article Controller']);
-        // or render a template
-        // in the template, print things with {{ product.name }}
-        // return $this->render('product/show.html.twig', ['product' => $product]);
     }
 
 

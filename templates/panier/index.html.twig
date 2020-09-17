@@ -30,7 +30,7 @@
                         <td class="text-success text-center">{{item.product.nomArticle}}</td>
                         <td class="text-success text-center">{{item.product.prixArticle}} €</td>
                         <td >{{item.quantity}}</td>
-                        <td class="text-success text-center">{{item.product.prixArticle}} €</td>
+                        <td class="text-success text-center">{{item.product.prixArticle * item.quantity}} €</td>
                         <td> 
                             {# DELETE #}
                             <a href="{# {{ path ('panier_add', {'id': article.id})}} #}" class="card-link text-warning mx-3">
@@ -50,7 +50,8 @@
             <tfoot>
                 <tr>
                     <td colspan="2" > </td>
-                    <td class=" bg-success text-light rounded-bottom h-100">Total</td>
+                    <td class="bg-success text-light rounded-bottom h-100">Total</td>
+                    <td class="rounded-bottom h-100"><b>{{total}} €</b></td>
                 </tr>
             </tfoot>
         </table>

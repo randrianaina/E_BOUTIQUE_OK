@@ -9,12 +9,12 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use App\Repository\ArticlesRepository;
 
-
+use App\Entity\Articles;
 
 class PanierController extends AbstractController
 {
     /**
-     * @Route("/panier", name="panier")
+     * @Route("/panier", name="panier_page")
      */
     public function index(SessionInterface $session, ArticlesRepository $articlesRepository)
     {
@@ -52,6 +52,10 @@ class PanierController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("/}" , name="nav_total")           
+     */
+
 
 
 
@@ -61,7 +65,6 @@ class PanierController extends AbstractController
 
     //public function add($id, Request $request)
     // ^^ Method 1: On demande $id, on recupere la requete ^^
-
     public function add($id, SessionInterface $session)
     // Methode 2: on demande un OBJET qui REPRESENT la SESSION
     {
@@ -83,8 +86,18 @@ class PanierController extends AbstractController
         $session->set('panier', $panier);
         // Pour garder dans la SESSION l'etat actuel du $panier
 
-        dd($session->get('panier'));
+        dump($session->get('panier'));
         //dumb&die
+
+        $repository = $this->getDoctrine()->getRepository(Articles::class);
+        $articles = $repository->findBy(array("idCategorie" => 1));
+        //dump($articles);
+
+        if (!$articles) {
+            throw $this->createNotFoundException('Pas d\'article trouvé ...!');
+        }
+
+        return $this->render('article/index.html.twig', ['articles' => $articles, 'controller_name' => 'Article Controller']);
 
     }
 }
