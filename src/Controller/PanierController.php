@@ -53,13 +53,6 @@ class PanierController extends AbstractController
     }
 
     /**
-     * @Route("/}" , name="nav_total")           
-     */
-
-
-
-
-    /**
      * @Route("/panier/add/{id}" , name="panier_add")           //Convention name: controllername_methode
      */
 
@@ -97,7 +90,25 @@ class PanierController extends AbstractController
             throw $this->createNotFoundException('Pas d\'article trouvé ...!');
         }
 
-        return $this->render('article/index.html.twig', ['articles' => $articles, 'controller_name' => 'Article Controller']);
+        /* return $this->render('article/index.html.twig', ['articles' => $articles, 'controller_name' => 'Article Controller']); */
+
+        return $this->redirectToRoute('article_tous');
 
     }
+    /**
+     * @Route ("/panier/remove/{id}") , name="panier_remove") 
+     */
+    public function remove($id, SessionInterface $session) {
+        $panier = $session->get('panier', []);
+
+        if (!empty($panier[$id])) {
+            unset($panier[$id]);
+        }
+
+        $session->set('panier', $panier);
+    }
+
+
+
+
 }
