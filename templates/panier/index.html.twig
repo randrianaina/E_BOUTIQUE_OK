@@ -8,72 +8,40 @@
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
 
-<<<<<<< HEAD
-<div class="checkout">
-	<div class="title">
-		<div class="wrap">
-		<h2 class="first">Panier</h2>
-		</div>
-	</div>
-	{# <form method="post" action="panier"> #}
-        <div class="table">
-            <div class="wrap">
 
-                <div class="rowtitle">
-                    <span class="name">Product name</span>
-                    <span class="price">Price</span>
-                    <span class="quantity">Quantity</span>
-                    <span class="subtotal">Prix avec TVA</span>
-                    <span class="action">Actions</span>
-                </div>
 
-                {foreach from=$allArticles item=article}
-                <div class="row">
-                    <a href="#" class="img"> <img src="{$article->get_imageArticle()}" height="53"></a>
-                    <span class="name">{$article->get_nomArticle()}</span>
-                    <span class="price">{$article->get_prixArticle()} €</span>
-                    <span class="quantity"><input type="text" name="panier[quantity][{$article->get_idArticle()}]" value="{$panier->quantite({$article->get_idArticle()})}"></span>
-                    <span class="subtotal">{$article->get_prixArticle()} €</span>
-                    <span class="action"><a href="sup_art_panier&{$article->get_idArticle()}" class="del"><img src="view/web/img/del.png"></a></span>
-                </div>
-                {/foreach}
-                <div class="rowtotal">
-                    Grand Total : <span class="total">{$panier->total()}  € </span>
-                </div>
-                <input type="submit" value="Recalculer">
-            </div>
-        </div>
-	{# </form> #}
-=======
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/Applications/MAMP/htdocs/E_BOUTIQUE_OK/src/Controller/PanierController.php'|file_link(0) }}">src/Controller/PanierController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/Applications/MAMP/htdocs/E_BOUTIQUE_OK/templates/panier/index.html.twig'|file_link(0) }}">templates/panier/index.html.twig</a></code></li>
-    </ul>
-
+<div class="mx-5 border border-success rounded shadow">
+    <p class="h1 text-success text-center">Shopping Cart</p>
     {% if items | length > 0 %}
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Article</th>
-                    <th>Image</th>
+        <table class="table table-hover">
+            <thead class="thead-light">
+                <tr >
+                    <th colspan="2" class="text-center">Article</th>
                     <th>Prix</th>
-                    <th>Quantite</th>
-                    <th>Type</th>
-                    <th>BTN Delete</th>
+                    <th>Quantity</th>
+                    <th>Prix TTC</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
                 {% for item in items %}
-                    <tr>
-                        <td>{{item.product.nomArticle}}</td>
-                        <td>{{item.product.imageArticle}}</td>
-                        <td>{{item.product.prixArticle}}</td>
-                        <td>{{item.quantity}}</td>
-                        <td></td>
+                    <tr >
+                        <td><div class="w-75 m-0 "><img src="{{asset('img/' ~ item.product.imageArticle)}}" class="card-img-top w-25 " alt="" ></div></td>
+                        <td class="text-success text-center">{{item.product.nomArticle}}</td>
+                        <td class="text-success text-center">{{item.product.prixArticle}} €</td>
+                        <td >{{item.quantity}}</td>
+                        <td class="text-success text-center">{{item.product.prixArticle}} €</td>
+                        <td> 
+                            {# DELETE #}
+                            <a href="{# {{ path ('panier_add', {'id': article.id})}} #}" class="card-link text-warning mx-3">
+                                {# ICON #}
+                                <svg width="2rem" height="2rem" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                    <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                                </svg>
+                            <a>
+                        </td>
+                        
                     </tr> 
                 {% endfor %}
                
@@ -81,19 +49,19 @@
 
             <tfoot>
                 <tr>
-                    <td>Total </td>
-                    <td></td>
+                    <td colspan="2" > </td>
+                    <td class=" bg-success text-light rounded-bottom h-100">Total</td>
                 </tr>
             </tfoot>
         </table>
     {% else %}
         <p> Surprise, c'est vide! </p> 
     {% endif %}
+</div>
     
->>>>>>> 20db3481845c5d4b16dccdda96aa35024f8594bc
 </div>
 
-    <div>
+    {# <div>
         <table class="table table-hover">
         <thead>
             <tr>
@@ -105,7 +73,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
+                {#<tr>
                 {% for article in articles %}
                     <th scope="row">{{article.imageArticle}}</th>
                     <td>{{article.nomArticle}}</td>
@@ -114,12 +82,12 @@
                     <td>Prix TTC</td>
                     <td>Action</td>
                 {% endfor %}
-            </tr>
-        </tbody>
+            </tr> #}
+        {#</tbody>
         <tfoot> 
 
         </tfoot>
         </table>
-    </div>
+    </div> #}
 
 {% endblock %}
