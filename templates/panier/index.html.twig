@@ -26,6 +26,9 @@
                         </td>
                         <td class="text-success text-center">{{item.product.nomArticle}}</td>
                         <td class="text-success text-center">{{item.product.prixArticle}} €</td>
+                        <td >{{item.quantity}}</td>
+                        <td class="text-success text-center">{{item.product.prixArticle * item.quantity}} €</td>
+                        <td> 
                         <td class="text-center font-weight-bold"> 
                          {# Buttons + or - #}
                             <button type="button" class="btn btn-outline-success border-0">
@@ -61,7 +64,8 @@
             <tfoot>
                 <tr>
                     <td colspan="2" > </td>
-                    <td class=" bg-success text-light text-center font-weight-bold rounded-bottom h-100 shadow">Total</td>
+                    <td class="bg-success text-light rounded-bottom h-100">Total</td>
+                    <td class="rounded-bottom h-100"><b>{{total}} €</b></td>
                 </tr>
             </tfoot>
         </table>
