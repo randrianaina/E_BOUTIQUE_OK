@@ -8,26 +8,40 @@
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
 
-<div class="example-wrapper">
+
+
+<div class="mx-5 border border-success rounded shadow">
+    <p class="h1 text-success text-center">Shopping Cart</p>
     {% if items | length > 0 %}
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Article</th>
-                    <th>Image</th>
+        <table class="table table-hover">
+            <thead class="thead-light">
+                <tr >
+                    <th colspan="2" class="text-center">Article</th>
                     <th>Prix</th>
-                    <th>Quantite</th>
-                    <th>Delete</th>
+                    <th>Quantity</th>
+                    <th>Prix TTC</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
                 {% for item in items %}
-                    <tr>
-                        <td>{{item.product.nomArticle}}</td>
-                        <td>{{item.product.imageArticle}}</td>
-                        <td>{{item.product.prixArticle}}</td>
-                        <td>{{item.quantity}}</td>
-                        <td><a href="#" class="btn btn-danger btn-sm">DEL </a></td>
+                    <tr >
+                        <td><div class="w-75 m-0 "><img src="{{asset('img/' ~ item.product.imageArticle)}}" class="card-img-top w-25 " alt="" ></div></td>
+                        <td class="text-success text-center">{{item.product.nomArticle}}</td>
+                        <td class="text-success text-center">{{item.product.prixArticle}} €</td>
+                        <td >{{item.quantity}}</td>
+                        <td class="text-success text-center">{{item.product.prixArticle}} €</td>
+                        <td> 
+                            {# DELETE #}
+                            <a href="{# {{ path ('panier_add', {'id': article.id})}} #}" class="card-link text-warning mx-3">
+                                {# ICON #}
+                                <svg width="2rem" height="2rem" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                    <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                                </svg>
+                            <a>
+                        </td>
+                        
                     </tr> 
                 {% endfor %}
                
@@ -35,16 +49,14 @@
 
             <tfoot>
                 <tr>
-                    <td colspan="3" class='text-right'>Total: </td>
-                    <td><b>{{total}}</b></td>
-                    <td> euros </td>
+                    <td colspan="2" > </td>
+                    <td class=" bg-success text-light rounded-bottom h-100">Total</td>
                 </tr>
             </tfoot>
         </table>
     {% else %}
         <p> Surprise, c'est vide! </p> 
     {% endif %}
-    
 </div>
 
 {% endblock %}

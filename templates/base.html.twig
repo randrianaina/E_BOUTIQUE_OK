@@ -4,8 +4,9 @@
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}
-            {# CSS #}
+            {# BOOTSTRAP #}
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+            {# CSS #}
         {% endblock %}
     </head>
     <body>
@@ -52,8 +53,14 @@
                                         <td colspan="2" class="text-white"> Total</td>
                                     </tr>
                                     <tr>
-                                        <th scope="row" class="text-success text-center font-weight-normal font-italic">Items</th>
-                                        <td colspan="2" class="text-success text-center font-weight-normal font-italic"><b>{{total}} €</b></td>
+                                        {% for item in items %}
+                                            <th scope="row" class="text-success text-center font-weight-normal font-italic">Items</th>
+                                            {% if total is defined %}
+                                                <td colspan="2" class="text-success text-center font-weight-normal font-italic"><b>{{total}} €</b></td>
+                                            {% else %}
+                                                <td colspan="2" class="text-success text-center font-weight-normal font-italic"><b> 0 €</b></td>
+                                            {% endif %}
+                                        {% endfor %}
                                     </tr>
                                 </table>
                             </div>
