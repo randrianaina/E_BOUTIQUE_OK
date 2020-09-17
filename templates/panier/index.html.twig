@@ -21,11 +21,14 @@
             <tbody>
                 {% for item in items %}
                     <tr >
+                        {# Articles Image + nom #}
                         <td class="text-center px-0" style="width:150px; ">
                             <img src="{{asset('img/' ~ item.product.imageArticle)}}" class="w-50"  alt=""  >
                         </td>
                         <td class="text-success text-center">{{item.product.nomArticle}}</td>
+                        {# Prix Unitaire #}
                         <td class="text-success text-center">{{item.product.prixArticle}} €</td>
+                        {# Quantité #}
                         <td class="text-center font-weight-bold"> 
                          {# Buttons + or - #}
                             <button type="button" class="btn btn-outline-success border-0">
@@ -41,7 +44,9 @@
                             </button>
 
                         </td>
+                        {# Prix * Quantité #}
                         <td class="text-success text-center">{{item.product.prixArticle * item.quantity}} €</td>
+                        {# Actions #}
                         <td class="text-center"> 
                             {# DELETE #}
                             <a href="{# {{ path ('panier_add', {'id': article.id})}} #}" class="card-link text-warning ">
