@@ -53,14 +53,15 @@
                                         <td colspan="2" class="text-white"> Total</td>
                                     </tr>
                                     <tr>
-                                        {% for item in items %}
+                                        
                                             <th scope="row" class="text-success text-center font-weight-normal font-italic">Items</th>
                                             {% if total is defined %}
-                                                <td colspan="2" class="text-success text-center font-weight-normal font-italic"><b>{{total}} €</b></td>
+                                                {# {% for item in items %} #}
+                                                    <td colspan="2" class="text-success text-center font-weight-normal font-italic"><b>{{total}} €</b></td>
+                                                {# {% endfor %} #}
                                             {% else %}
                                                 <td colspan="2" class="text-success text-center font-weight-normal font-italic"><b> 0 €</b></td>
                                             {% endif %}
-                                        {% endfor %}
                                     </tr>
                                 </table>
                             </div>

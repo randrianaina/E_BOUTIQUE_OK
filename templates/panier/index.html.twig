@@ -3,11 +3,6 @@
 {% block title %}Hello PanierController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
 
 
 <div class="mx-5 border border-success rounded shadow">
@@ -26,23 +21,25 @@
             <tbody>
                 {% for item in items %}
                     <tr >
-                        <td class="text-center  ">
-                            <img src="{{asset('img/' ~ item.product.imageArticle)}}" class="w-25"  alt=""  >
+                        <td class="text-center px-0" style="width:150px; ">
+                            <img src="{{asset('img/' ~ item.product.imageArticle)}}" class="w-50"  alt=""  >
                         </td>
                         <td class="text-success text-center">{{item.product.nomArticle}}</td>
                         <td class="text-success text-center">{{item.product.prixArticle}} €</td>
                         <td class="text-center font-weight-bold"> 
+                         {# Buttons + or - #}
                             <button type="button" class="btn btn-outline-success border-0">
                                 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-dash-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h7a.5.5 0 0 0 0-1h-7z"/>
                                 </svg>
-                            </button>                        
-                        {{item.quantity}}
+                            </button>
+                                {{item.quantity}}
                             <button type="button" class="btn btn-outline-success border-0">
                                 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-plus-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
                                 </svg>
                             </button>
+
                         </td>
                         <td class="text-success text-center">{{item.product.prixArticle}} €</td>
                         <td class="text-center"> 
