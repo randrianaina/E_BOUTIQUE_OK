@@ -1,0 +1,16 @@
+
+/* Taille des images dans les cartes page accueil */
+.card-img-top {
+    max-width: 200px;
+    max-height: 200px;
+}
+
+/* Taille des images des cartes dans le panier*/
+.cartImg{
+    width:150px;
+}
+
+.img-cart {
+    max-width: 100px;
+    max-height: 100px;
+}

@@ -22,8 +22,8 @@
                 {% for item in items %}
                     <tr >
                         {# Articles Image + nom #}
-                        <td class="text-center px-0" style="width:150px; ">
-                            <img src="{{asset('img/' ~ item.product.imageArticle)}}" class="w-50"  alt=""  >
+                        <td class="cartImg text-center px-0" >
+                            <img src="{{asset('img/' ~ item.product.imageArticle)}}" class="img-cart"  alt=""  >
                         </td>
                         <td class="text-success text-center">{{item.product.nomArticle}}</td>
                         {# Prix Unitaire #}
