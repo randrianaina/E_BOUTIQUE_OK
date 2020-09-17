@@ -82,21 +82,11 @@ class PanierController extends AbstractController
         dump($session->get('panier'));
         //dumb&die
 
-        $repository = $this->getDoctrine()->getRepository(Articles::class);
-        $articles = $repository->findBy(array("idCategorie" => 1));
-        //dump($articles);
-
-        if (!$articles) {
-            throw $this->createNotFoundException('Pas d\'article trouvé ...!');
-        }
-
-        /* return $this->render('article/index.html.twig', ['articles' => $articles, 'controller_name' => 'Article Controller']); */
-
         return $this->redirectToRoute('article_tous');
 
     }
     /**
-     * @Route ("/panier/remove/{id}") , name="panier_remove") 
+     * @Route ("/panier/remove/{id}" , name="panier_remove") 
      */
     public function remove($id, SessionInterface $session) {
         $panier = $session->get('panier', []);
@@ -106,6 +96,8 @@ class PanierController extends AbstractController
         }
 
         $session->set('panier', $panier);
+
+        return $this->redirectToRoute(("panier_page"));
     }
 
     /**

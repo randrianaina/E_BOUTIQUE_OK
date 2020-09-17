@@ -61,8 +61,12 @@
                                         <td colspan="2" class="text-success "> Total</td>
                                     </tr>
                                     <tr>
+<<<<<<< HEAD
                                         
                                             <th scope="row" class="text-white text-center font-weight-normal font-italic">{{ app.session.get('panier') | length }}</th>
+=======
+                                            <th scope="row" class="text-success text-center font-weight-normal font-italic">{{ app.session.get('panier') | length }}</th>
+>>>>>>> b09b8612cfc2ca4393652c40fb95d365c7343c55
                                             {% if total is defined %}
 {# pourquoi cette partie est commentée ? ==>>    <td colspan="2" class="text-white text-center font-weight-normal font-italic"><b>{{total}} €</b></td>  #}
                                             {% else %}
