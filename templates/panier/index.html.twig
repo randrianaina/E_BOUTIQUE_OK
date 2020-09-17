@@ -5,10 +5,11 @@
 {% block body %}
 
 
-<div class="mx-5 border border-success rounded shadow">
-    <p class="h1 text-success text-center">Shopping Cart</p>
+<div class="mx-5 border border-success rounded shadow table-responsive-sm my-3">
+    <p class="h1 text-success text-center py-2">Shopping Cart</p>
     {% if items | length > 0 %}
         <table class="table table-hover">
+            {# En-tête tableau #}
             <thead class="thead-light">
                 <tr >
                     <th colspan="2" class="text-center">Article Designation</th>
@@ -65,8 +66,9 @@
             <tfoot>
                 <tr>
                     <td colspan="2" > </td>
-                    <td class="bg-success text-light rounded-bottom h-100">Total</td>
-                    <td class="rounded-bottom h-100"><b>{{total}} €</b></td>
+                    <td class="bg-success text-light rounded-bottom h-100 font-weight-bolder">Total</td>
+                    <td class="text-center"><b>quantity</b></td>
+                    <td class="text-center"><b>{{total}} €</b></td>
                 </tr>
             </tfoot>
         </table>
