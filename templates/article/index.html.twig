@@ -9,32 +9,22 @@
 </style>
 
     <div>
-        {% if article is defined %}
-            {# <p>Voici l'article : {{ article.id }} => {{article.nomArticle}}</p> #}
-            
-        {% else %}
-        {#     Pour affichage de findBy() ou findAll() #}
 
             {% for article in articles %} 
 
             {# CARD #}
-            <form method="POST" action='{# {{path('add_article')}} #}' class="d-inline-flex m-3">
                 <div class="card d-inline-flex m-3" style="width: 18rem; ">
                     <div class="card-body">
                         <h5 class="card-title">{{article.nomArticle}}</h5>
-                        {# {% if loop.index == 1 %} #}
                         <div>
                             <img src="{{asset('img/' ~ article.imageArticle)}}" class="card-img-top" alt="" >
                         </div>
-                        {# {% endif %} #}
                     </div>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item text-center text-success">{{article.prixArticle}} €</li>
-                        {# <li class="list-group-item">{{article.descriptionArticle}}</li> #}
                     </ul>
                     <div class="card-body">
                     {# Bouton clic panier #}
-                      {#  <input type='submit' name={{article.id}}> #}
                             <a href="{{ path ('panier_add', {'id': article.id})}}" class="card-link text-warning mx-3">
                                         {# path - NAME @Route; on ajoute le parametre demande par la methode 'add'#}
                                                                 {# Chaque BTN va representer l'ID d'article #}
@@ -46,8 +36,6 @@
                         <a href="#" class="card-link text-warning">Description</a>
                     </div>
                 </div>
-            </form>
             {% endfor %}
-        {% endif %} 
     </div> 
 {% endblock %}

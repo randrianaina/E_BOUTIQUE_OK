@@ -26,9 +26,6 @@
                         </td>
                         <td class="text-success text-center">{{item.product.nomArticle}}</td>
                         <td class="text-success text-center">{{item.product.prixArticle}} €</td>
-                        <td >{{item.quantity}}</td>
-                        <td class="text-success text-center">{{item.product.prixArticle * item.quantity}} €</td>
-                        <td> 
                         <td class="text-center font-weight-bold"> 
                          {# Buttons + or - #}
                             <button type="button" class="btn btn-outline-success border-0">
@@ -44,7 +41,7 @@
                             </button>
 
                         </td>
-                        <td class="text-success text-center">{{item.product.prixArticle}} €</td>
+                        <td class="text-success text-center">{{item.product.prixArticle * item.quantity}} €</td>
                         <td class="text-center"> 
                             {# DELETE #}
                             <a href="{# {{ path ('panier_add', {'id': article.id})}} #}" class="card-link text-warning ">
