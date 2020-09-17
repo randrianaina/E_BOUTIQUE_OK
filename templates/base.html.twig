@@ -61,16 +61,13 @@
                                         <td colspan="2" class="text-success "> Total</td>
                                     </tr>
                                     <tr>
-                                    {# {% if app.user %}
-                                            {% for item in items %} #}
-                                                <th scope="row" class="text-white text-center font-weight-normal font-italic"> 0 </th>
-                                                {# {% if total is defined %}
-                                                    <td colspan="2" class="text-success text-center font-weight-normal font-italic"><b>{{total}} €</b></td>
-                                                {% else %} #}
-                                                    <td colspan="2" class="text-white text-center font-weight-normal font-italic"><b> 0 €</b></td>
-                                                {# {% endif %}
-                                            {% endfor %}
-                                    {% endif %}    #} 
+                                        
+                                            <th scope="row" class="text-success text-center font-weight-normal font-italic">{{ app.session.get('panier') | length }}</th>
+                                            {% if total is defined %}
+                                                    {# <td colspan="2" class="text-success text-center font-weight-normal font-italic"><b>{{total}} €</b></td> #}
+                                            {% else %}
+                                                <td colspan="2" class="text-success text-center font-weight-normal font-italic"><b> 0 €</b></td>
+                                            {% endif %}
                                     </tr>
                                 </table>
                             </div>
